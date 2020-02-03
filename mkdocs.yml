@@ -1,0 +1,6 @@
+site_name: My Docs
+nav:
+- Accueil: 'index.md'
+- Gestion commandes & livraison:
+    - 'Presentation interface': 'orders_and_delivery/interface_prez.md'
+    - 'Cycle de vie commande': 'orders_and_delivery/order_lifecycle.md'
