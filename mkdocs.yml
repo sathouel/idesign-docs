@@ -1,6 +1,12 @@
 site_name: My Docs
 nav:
 - Accueil: 'index.md'
-- Gestion commandes & livraison:
-    - 'Presentation interface': 'orders_and_delivery/interface_prez.md'
-    - 'Cycle de vie commande': 'orders_and_delivery/order_lifecycle.md'
+- Gestion des commandes et Livraisons:
+    - "Presentation de l'interface": 'orders_and_delivery/interface.md'
+    - 'Gestion des produits': 'orders_and_delivery/products.md'
+    - 'Gestion des prix': 'orders_and_delivery/prices.md'
+    - 'Gestion des stocks': 'orders_and_delivery/stocks.md'
+    - 'Gestion des clients': 'orders_and_delivery/clients.md'
+    - 'Gestion des commandes': 'orders_and_delivery/orders.md'
+    - 'Gestion de la logistique': 'orders_and_delivery/logistics.md'
+    - 'Gestion des livraison': 'orders_and_delivery/delivery.md'

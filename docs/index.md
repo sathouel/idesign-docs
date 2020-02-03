@@ -1,12 +1,15 @@
 # International Design Documentation
 
-Cette documentation presente les differents outils 
+Cette documentation presente les differentes application de l'organisation International Design. 
 
 ## Gestion des fournisseurs
 
 En cours de developpement ...
 
 ## Gestion des commandes et Livraisons
+
+Cette section presente l'app de gestion de commande et livraison, soit toutes les operation `post vente`.
+Vous pouvez acceder a l'app via [ce lien](https://idlogistics.zohocreatorportal.com/) ainsi que de vos login.
 
 * [Presentation de l'interface](orders_and_delivery/interface.md)
 * [Gestion des produits](orders_and_delivery/products.md)
