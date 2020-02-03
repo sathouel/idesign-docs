@@ -24,3 +24,15 @@ Si vous créez une listing prix personnalisée, l appliquation copiera dans un p
 ### Modification de Listing prix
 
 **Seul les listing prix personnalisé (type 2) peuvent etre modifiées**
+
+Etapes a suivres:
+
+1. Rendez vous dans le rapport de listing prix details
+2. Affichez seulement les entrées de la listing prix que vous voullez modifier via un filtre
+3. Affichez les entrées en tant que **feuille de calcul**
+4. Modifiez directement sur le rapport les prix des produit.
+5. cliquez sur l'icone de sauvegarde
+
+![Modification Listing Prix 1](/img/orders_and_delivery/prices/edit_pricelist_1.png)
+![Modification Listing Prix 2](/img/orders_and_delivery/prices/edit_pricelist_2.png)
+![Modification Listing Prix 3](/img/orders_and_delivery/prices/edit_pricelist_3.png)
