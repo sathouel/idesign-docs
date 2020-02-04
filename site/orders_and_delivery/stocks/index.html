@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Gestion des stocks - My Docs</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">My Docs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Accueil</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gestion des commandes et Livraisons <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../interface/">Presentation de l'interface</a>
+</li>
+                                    
+<li >
+    <a href="../products/">Gestion des produits</a>
+</li>
+                                    
+<li >
+    <a href="../prices/">Gestion des prix</a>
+</li>
+                                    
+<li >
+    <a href="../clients/">Gestion des clients</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Gestion des stocks</a>
+</li>
+                                    
+<li >
+    <a href="../orders/">Gestion des commandes</a>
+</li>
+                                    
+<li >
+    <a href="../logistics/">Gestion de la logistique</a>
+</li>
+                                    
+<li >
+    <a href="../delivery/">Gestion des livraison</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../clients/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../orders/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#gestion-des-stocks">Gestion des stocks</a></li>
+            <li><a href="#creation-de-stock">Creation de stock</a></li>
+            <li><a href="#modification-de-stock">Modification de stock</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="gestion-des-stocks">Gestion des stocks</h1>
+<p>Le stock d'un produit peux avoir 4 status differents:</p>
+<ol>
+<li><strong>Disponible</strong>: Le produit <strong>est physiquement disponible</strong> en entrepot et <strong>disponible a la vente</strong></li>
+<li><strong>Reservé</strong>: Le produit <strong>est physiquement disponible</strong> en entrepot mais <strong>non disponible a la vente</strong></li>
+<li><strong>En arrivage disponible</strong>:  Le produit <strong>n'est pas disponible physiquement</strong> en entrepot mais <strong>disponible a la vente</strong></li>
+<li><strong>En arrivage reservé</strong>: Le produit <strong>n'est pas disponible physiquement</strong> en entrepot et <strong>non disponible a la vente</strong></li>
+</ol>
+<p>Ci dessous un screenshot du rapport des stocks.
+<img alt="Rapport Stock exemple 1" src="/img/orders_and_delivery/stocks/stocks_rapport_1.png" /></p>
+<h2 id="creation-de-stock">Creation de stock</h2>
+<p>Lorsqu'un produit est créer la creation de son stock est <strong>automatique</strong> elle ne sera donc jamais faite par un utilisateur. A sa creation le stock du produit est a zero (valeurs 0 dans les quatres etats voir exemple ci dessus).</p>
+<h2 id="modification-de-stock">Modification de stock</h2>
+<p>Pour modifié de stock d'un produit vous devez cree un <strong>ajustement de stock</strong> puis l'excecuter.</p>
+<p>Pour cree un ajustement il faut soummetre un formulaire valide de type <strong>ajustement de stock</strong> dans la sections <strong>stocks</strong>
+Un Ajustement de stock peux etre de 5 type differents:</p>
+<ol>
+<li><strong>Arrivage</strong>: Reception d'un conteneur, le stock en arrivage passe en physiquement diponible. <strong>cela ne modifie pas la disponibilité a le vente du produit</strong></li>
+<li><strong>Conteneur commandé</strong>: Commande d'un conteneur -&gt; le stock en arrivage est modifié a la hausse.</li>
+<li><strong>Retirer du stock</strong>: Retirer du stock qui est physiquement disponible <strong>et</strong> disponible a la vente.</li>
+<li><strong>Ajouter au stock</strong>: Ajouter du stock physiquement disponible <strong>et</strong> disponible a la vente.</li>
+<li><strong>Annulation arrivage</strong>: Retirer du stock en arrivage <strong>et</strong> disponible a la vente.</li>
+</ol>
+<p>La Raison de l'ajustement dois egalement etre renseigner ainsi que la liste des produits et quantitées de l'ajustement (exemple ci dessous).</p>
+<p><img alt="Ajustement de stock exemple 1" src="/img/orders_and_delivery/stocks/ajustement_example_1.png" /></p>
+<p>Une fois l'ajustement crée, pour l'executé rendez vous dans le rapport de <strong>stock ajustement</strong> dans la section <strong>stocks</strong> puis cliquez sur le bouton <em>Perform Ajustement</em> situé dans l'entrée correspondante (exemple ci dessous), si l'ajustement créer est valide le stock sera ajusté. les entrées des ajustement effectué auront leur boutton <em>Perform Ajustement</em> grisé.</p>
+<p><img alt="Ajustement de stock exemple 2" src="/img/orders_and_delivery/stocks/ajustement_example_2.png" /></p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
