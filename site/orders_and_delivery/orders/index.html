@@ -113,17 +113,62 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#gestion-des-commandes">Gestion des commandes</a></li>
-            <li><a href="#cycle-de-vie-dune-commande">cycle de vie d'une commande</a></li>
             <li><a href="#creation-dune-commande">Creation d'une commande</a></li>
+            <li><a href="#cycle-de-vie-dune-commande">Cycle de vie d'une commande</a></li>
             <li><a href="#modifitcation-dune-commande">Modifitcation d'une commande</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h1 id="gestion-des-commandes">Gestion des commandes</h1>
-<h2 id="cycle-de-vie-dune-commande">cycle de vie d'une commande</h2>
-<p><img alt="Cycle de vie commande" src="/img/orders_and_delivery/orders/order_lifecycle.png" /></p>
 <h2 id="creation-dune-commande">Creation d'une commande</h2>
+<p>La Creation d'une commande s'effectue lorsqu' un formulaire valide de type commande est soumis.</p>
+<p>Une <strong>commande</strong> est lié a un <strong>client</strong> qui est lui meme lié a une <strong>listing prix</strong> ainsi qu'a des données de facturation tel que l'adresse de facturation, le franco, la TVA et la comptabilisation de l'ecotaxe si c'est un client Francais etc. (voir <a href="orders_and_delivery/clients.md">Gestion des clients</a> et <a href="orders_and_delivery/prices.md">Gestion des prix</a> pour plus d'informations)</p>
+<p><strong>Par consequent la premiere etape de la creation d'une commande est la selection d'un client.</strong></p>
+<p>L'adresse de livraison de la commande peux etre selectionner parmis les adresses de livraison lié au client ou peux etre modifié a la main, de meme pour les autres informations de livraison (ex: <em>mode de livraison, date de livraison min/max</em>). Cette selection s'effectue exclusivement a la creation de la commande et ne poura etre modifié par la suite.</p>
+<p>Enfin, les produit commandés sont a saisir via des lignes de saisie ou <strong>line item</strong>, a la selection du produit les autres champs sont automatiquement renseigné en fonction de la listing prix du client ou des infos du produit (voir <a href="orders_and_delivery/products.md">Gestion des produit</a> et <a href="orders_and_delivery/prices.md">Gestion des prix</a> pour plus d'info).</p>
+<p><strong>Par consequent les seul information a renseigner lors de la saisi des line items sont le produit et le nombre de lot commandés</strong></p>
+<p><em>Ci dessous, saisie de commande avec 2 line items</em>
+<img alt="Saisie de produits" src="/img/orders_and_delivery/orders/order_line_items.png" /></p>
+<h2 id="cycle-de-vie-dune-commande">Cycle de vie d'une commande</h2>
+<p>A la creation d'une commande, l'application associe a la commande un <strong>statut</strong>. <strong>Apres sa creation</strong> une commande peux avoir <strong>3 statuts possible</strong>:</p>
+<ol>
+<li><strong>En cours</strong></li>
+<li><strong>En attente</strong></li>
+<li><strong>Invalide</strong></li>
+</ol>
+<p>Le statut d'une commande est difinit par rapport au statut de ses <strong>line items</strong>. En effet, chaque line item ou ligne de saisie (voir exemple dans la section Creation de commande) peux avoir <strong>4 statuts possible</strong></p>
+<ol>
+<li><strong>En stock</strong>: le produit de la line item est <strong>disponible dans la quantité demandée en entrepot</strong>. Autrement dit la quantité demandé est inferieur au stock <strong>disponible en entrepot</strong> du produit.</li>
+<li><strong>En arrivage</strong>: La quantité demandé est inferieur au stock en <strong>arrivage disponible</strong> du produit mais superieur au stock <strong>disponible en entrepot</strong>.</li>
+<li><strong>Hybride</strong>: Seul la somme des stock disponible en entrepot et en arrivage disponible est superieur a la quantitée demandée</li>
+<li><strong>Invalide</strong>: Il n'y a pas assez de quantitée en stock disponible ou/et en arrivage disponible.</li>
+</ol>
+<p>Par consequent apres creation/modification d'une commande son statut sera:</p>
+<ul>
+<li><strong>En cours</strong>: Si le statut de toutes ses line items est <strong>En stock</strong> par consequent la commande partira en preparation (voir <a href="orders_and_delivery/logistics.md">Gestion logistique</a>). Par consequent le stock sera <strong>reservé</strong>.</li>
+<li><strong>En attente</strong>: Si le statut de ses line items est un melage de <strong>En cours</strong> et <strong>En arrivage</strong>. Dans ce cas il faudra contacter le client pour voir si il prefere attendre l'arrivage, annuler la commande ou bien separer/<strong>spliter</strong> la commande en deux. Dans ce cas egalement le stock sera <strong>reservé</strong>.</li>
+<li><strong>Invalide</strong>: Le statut d'au moin une line item est <strong>Hybride</strong> ou <strong>Invalide</strong>. Par consequent <strong>les stock de la commande ne seront pas reservés</strong>, le client devra etre contacter pour annuler ou modifier la commande en fonction des stocks disponible.</li>
+</ul>
+<p><em>Ci dessous un diagram recapitulatif</em></p>
+<p><img alt="Statut commande 1" src="/img/orders_and_delivery/orders/order_status_1.png" /></p>
+<h3 id="operation-sur-commande">Operation sur commande</h3>
+<p>Nous avons vue plus haut que dans certain cas, nous devons modifié une commande pour differente raisons. Pour ce faire vous pouvez interagir avec les entrées de type commande sur les differents rapports de la section Commandes via <strong>5 operations</strong>:</p>
+<h4 id="1-operation-restock"><strong>1. Operation Restock</strong></h4>
+<p>Dans le cas ou le statut de la commande n'est pas <strong>Invalide</strong>, la creation de la commande a automatiquement <strong>reservé</strong> les stocks. Par consequent, si vous voullez modifier ou bien annulé la commande vous devez <strong>restocker</strong> les articles precedement <strong>reservés</strong>. Le bouton <strong>Restock</strong> permet donc de restocker les articles reservé d'une commande.</p>
+<p><strong>Toute commande non restockée ne poura JAMAIS etre modifiée ou annulée</strong></p>
+<h4 id="2-operation-process-commande"><strong>2. Operation Process Commande</strong></h4>
+<p>Une fois une commande modifié vous devais la faire "analyser" par l'application pour voir si elle est valide. Cette operation (re)check que chaque line item est valide suite a la modification et associe a la commande un nouveau statut parmis les 3 cités plus haut.</p>
+<h4 id="3-operation-split-commande"><strong>3. Operation Split Commande</strong></h4>
+<p>Si la commande est <strong>En attente</strong> car elle contient des line items a la fois disponible et en arrivage il est possible de <strong>spliter</strong> la commande en deux commandes distincte (dans le cas ou le client a ete contacter et decide d'etre livré en deux commandes). Deux nouvelles commandes seront donc crée:</p>
+<ul>
+<li>Une premiere contenant les line items disponible physiquement et qui passera directement au statut <strong>En cours</strong></li>
+<li>Un seconde contenant les line items en arrivage (qui lui sont reservé) et qui aura le statut <strong>En attente</strong></li>
+</ul>
+<!-- Le Diagram ci dessous presente le cycle de vie d'une commande.
+
+![Cycle de vie commande](/img/orders_and_delivery/orders/order_lifecycle.png) -->
+
 <h2 id="modifitcation-dune-commande">Modifitcation d'une commande</h2></div>
         </div>
 

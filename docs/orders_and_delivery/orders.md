@@ -55,7 +55,14 @@ Dans le cas ou le statut de la commande n'est pas **Invalide**, la creation de l
 
 #### **2. Operation Process Commande**
 
-Une fois une commande modifié vous devais la faire "analyser" par l'application pour voir si elle est valide.
+Une fois une commande modifié vous devais la faire "analyser" par l'application pour voir si elle est valide. Cette operation (re)check que chaque line item est valide suite a la modification et associe a la commande un nouveau statut parmis les 3 cités plus haut.
+
+#### **3. Operation Split Commande**
+
+Si la commande est **En attente** car elle contient des line items a la fois disponible et en arrivage il est possible de **spliter** la commande en deux commandes distincte (dans le cas ou le client a ete contacter et decide d'etre livré en deux commandes). Deux nouvelles commandes seront donc crée:
+
+* Une premiere contenant les line items disponible physiquement et qui passera directement au statut **En cours**
+* Un seconde contenant les line items en arrivage (qui lui sont reservé) et qui aura le statut **En attente**
 
 
 
