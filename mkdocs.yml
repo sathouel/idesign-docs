@@ -1,4 +1,4 @@
-site_name: My Docs
+site_name: Documentation ID
 nav:
 - Accueil: 'index.md'
 - Gestion des commandes et Livraisons:
