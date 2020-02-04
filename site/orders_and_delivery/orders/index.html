@@ -123,10 +123,10 @@
 <h1 id="gestion-des-commandes">Gestion des commandes</h1>
 <h2 id="creation-dune-commande"><strong>Creation d'une commande</strong></h2>
 <p>La Creation d'une commande s'effectue lorsqu' un formulaire valide de type commande est soumis.</p>
-<p>Une <strong>commande</strong> est lié a un <strong>client</strong> qui est lui meme lié a une <strong>listing prix</strong> ainsi qu'a des données de facturation tel que l'adresse de facturation, le franco, la TVA et la comptabilisation de l'ecotaxe si c'est un client Francais etc. (voir <a href="/orders_and_delivery/clients.md">Gestion des clients</a> et <a href="/orders_and_delivery/prices.md">Gestion des prix</a> pour plus d'informations)</p>
+<p>Une <strong>commande</strong> est lié a un <strong>client</strong> qui est lui meme lié a une <strong>listing prix</strong> ainsi qu'a des données de facturation tel que l'adresse de facturation, le franco, la TVA et la comptabilisation de l'ecotaxe si c'est un client Francais etc. (voir <a href="/orders_and_delivery/clients">Gestion des clients</a> et <a href="/orders_and_delivery/prices">Gestion des prix</a> pour plus d'informations)</p>
 <p><strong>Par consequent la premiere etape de la creation d'une commande est la selection d'un client.</strong></p>
 <p>L'adresse de livraison de la commande peux etre selectionner parmis les adresses de livraison lié au client ou peux etre modifié a la main, de meme pour les autres informations de livraison (ex: <em>mode de livraison, date de livraison min/max</em>). Cette selection s'effectue exclusivement a la creation de la commande et ne poura etre modifié par la suite.</p>
-<p>Enfin, les produit commandés sont a saisir via des lignes de saisie ou <strong>line item</strong>, a la selection du produit les autres champs sont automatiquement renseigné en fonction de la listing prix du client ou des infos du produit (voir <a href="/orders_and_delivery/products.md">Gestion des produit</a> et <a href="/orders_and_delivery/prices.md">Gestion des prix</a> pour plus d'info).</p>
+<p>Enfin, les produit commandés sont a saisir via des lignes de saisie ou <strong>line item</strong>, a la selection du produit les autres champs sont automatiquement renseigné en fonction de la listing prix du client ou des infos du produit (voir <a href="/orders_and_delivery/products">Gestion des produit</a> et <a href="/orders_and_delivery/prices">Gestion des prix</a> pour plus d'info).</p>
 <p><strong>Par consequent les seul information a renseigner lors de la saisi des line items sont le produit et le nombre de lot commandés</strong></p>
 <p><em>Ci dessous, saisie de commande avec 2 line items</em>
 <img alt="Saisie de produits" src="/img/orders_and_delivery/orders/order_line_items.png" /></p>
@@ -146,7 +146,7 @@
 </ol>
 <p>Par consequent apres creation/modification d'une commande son statut sera:</p>
 <ul>
-<li><strong>En cours</strong>: Si le statut de toutes ses line items est <strong>En stock</strong> par consequent la commande partira en preparation (voir <a href="/orders_and_delivery/logistics.md">Gestion logistique</a>). Par consequent le stock sera <strong>reservé</strong>.</li>
+<li><strong>En cours</strong>: Si le statut de toutes ses line items est <strong>En stock</strong> par consequent la commande partira en preparation (voir <a href="/orders_and_delivery/logistics">Gestion logistique</a>). Par consequent le stock sera <strong>reservé</strong>.</li>
 <li><strong>En attente</strong>: Si le statut de ses line items est un melage de <strong>En cours</strong> et <strong>En arrivage</strong>. Dans ce cas il faudra contacter le client pour voir si il prefere attendre l'arrivage, annuler la commande ou bien separer/<strong>spliter</strong> la commande en deux. Dans ce cas egalement le stock sera <strong>reservé</strong>.</li>
 <li><strong>Invalide</strong>: Le statut d'au moin une line item est <strong>Hybride</strong> ou <strong>Invalide</strong>. Par consequent <strong>les stock de la commande ne seront pas reservés</strong>, le client devra etre contacter pour annuler ou modifier la commande en fonction des stocks disponible.</li>
 </ul>
@@ -176,9 +176,9 @@
 <li>Seul les commandes en attente de livraison ou livrée peuvent etre facturée</li>
 </ul>
 <h3 id="preparation-de-la-commande">Preparation de la commande</h3>
-<p>Une fois que la commande est valide (le stock est physiquement disponible a l'entrepot et reservé pour la commande), la commande est <strong>automatiquement</strong> associée a un <strong>preparateur</strong> et passe en preparation. (voir <a href="/orders_and_delivery/logistics.md">Gestion de la logistique</a>)</p>
+<p>Une fois que la commande est valide (le stock est physiquement disponible a l'entrepot et reservé pour la commande), la commande est <strong>automatiquement</strong> associée a un <strong>preparateur</strong> et passe en preparation. (voir <a href="/orders_and_delivery/logistics">Gestion de la logistique</a>)</p>
 <h3 id="livraison-de-la-commande">Livraison de la commande</h3>
-<p>Une fois que la commande est pres a etre livrer, une livraison est organiser en fonction de la commande et du client (voir <a href="/orders_and_delivery/delivery.md">Gestion des livraison</a> )</p>
+<p>Une fois que la commande est pres a etre livrer, une livraison est organiser en fonction de la commande et du client (voir <a href="/orders_and_delivery/delivery">Gestion des livraison</a>)</p>
 <h2 id="diagram-cycle-de-vie-dune-commande">Diagram - cycle de vie d'une commande</h2>
 <p><img alt="Cycle de vie commande" src="/img/orders_and_delivery/orders/order_lifecycle.png" /></p></div>
         </div>

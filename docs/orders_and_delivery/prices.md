@@ -5,7 +5,7 @@ Le prix de vente HT est un prix de vente par defaut cependant si nous voullons p
 
 ## Listing Prix
 
-Un listing prix permet d'associer aux produit un prix de vente different de celui par defaut. Par la suite il peux etre associer a un ou plusieur client voir **[Gestion des clients](orders_and_delivery/clients.md)**.
+Un listing prix permet d'associer aux produit un prix de vente different de celui par defaut. Par la suite il peux etre associer a un ou plusieur client voir **[Gestion des clients](orders_and_delivery/clients)**.
 
 Un **listing prix** peux etre de deux types differente:
 

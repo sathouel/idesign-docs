@@ -4,13 +4,13 @@
 
 La Creation d'une commande s'effectue lorsqu' un formulaire valide de type commande est soumis.
 
-Une **commande** est lié a un **client** qui est lui meme lié a une **listing prix** ainsi qu'a des données de facturation tel que l'adresse de facturation, le franco, la TVA et la comptabilisation de l'ecotaxe si c'est un client Francais etc. (voir [Gestion des clients](/orders_and_delivery/clients.md) et [Gestion des prix](/orders_and_delivery/prices.md) pour plus d'informations)
+Une **commande** est lié a un **client** qui est lui meme lié a une **listing prix** ainsi qu'a des données de facturation tel que l'adresse de facturation, le franco, la TVA et la comptabilisation de l'ecotaxe si c'est un client Francais etc. (voir [Gestion des clients](/orders_and_delivery/clients) et [Gestion des prix](/orders_and_delivery/prices) pour plus d'informations)
 
 **Par consequent la premiere etape de la creation d'une commande est la selection d'un client.**
 
 L'adresse de livraison de la commande peux etre selectionner parmis les adresses de livraison lié au client ou peux etre modifié a la main, de meme pour les autres informations de livraison (ex: *mode de livraison, date de livraison min/max*). Cette selection s'effectue exclusivement a la creation de la commande et ne poura etre modifié par la suite.
 
-Enfin, les produit commandés sont a saisir via des lignes de saisie ou **line item**, a la selection du produit les autres champs sont automatiquement renseigné en fonction de la listing prix du client ou des infos du produit (voir [Gestion des produit](/orders_and_delivery/products.md) et [Gestion des prix](/orders_and_delivery/prices.md) pour plus d'info).
+Enfin, les produit commandés sont a saisir via des lignes de saisie ou **line item**, a la selection du produit les autres champs sont automatiquement renseigné en fonction de la listing prix du client ou des infos du produit (voir [Gestion des produit](/orders_and_delivery/products) et [Gestion des prix](/orders_and_delivery/prices) pour plus d'info).
 
 **Par consequent les seul information a renseigner lors de la saisi des line items sont le produit et le nombre de lot commandés**
 
@@ -35,7 +35,7 @@ Le statut d'une commande est difinit par rapport au statut de ses **line items**
 
 Par consequent apres creation/modification d'une commande son statut sera:
 
-* **En cours**: Si le statut de toutes ses line items est **En stock** par consequent la commande partira en preparation (voir [Gestion logistique](/orders_and_delivery/logistics.md)). Par consequent le stock sera **reservé**.
+* **En cours**: Si le statut de toutes ses line items est **En stock** par consequent la commande partira en preparation (voir [Gestion logistique](/orders_and_delivery/logistics)). Par consequent le stock sera **reservé**.
 * **En attente**: Si le statut de ses line items est un melage de **En cours** et **En arrivage**. Dans ce cas il faudra contacter le client pour voir si il prefere attendre l'arrivage, annuler la commande ou bien separer/**spliter** la commande en deux. Dans ce cas egalement le stock sera **reservé**.
 * **Invalide**: Le statut d'au moin une line item est **Hybride** ou **Invalide**. Par consequent **les stock de la commande ne seront pas reservés**, le client devra etre contacter pour annuler ou modifier la commande en fonction des stocks disponible.
 
@@ -77,11 +77,11 @@ Si la commande est **En attente** car elle contient des line items a la fois dis
 
 ### Preparation de la commande
 
-Une fois que la commande est valide (le stock est physiquement disponible a l'entrepot et reservé pour la commande), la commande est **automatiquement** associée a un **preparateur** et passe en preparation. (voir [Gestion de la logistique](/orders_and_delivery/logistics.md))
+Une fois que la commande est valide (le stock est physiquement disponible a l'entrepot et reservé pour la commande), la commande est **automatiquement** associée a un **preparateur** et passe en preparation. (voir [Gestion de la logistique](/orders_and_delivery/logistics))
 
 ### Livraison de la commande
 
-Une fois que la commande est pres a etre livrer, une livraison est organiser en fonction de la commande et du client (voir [Gestion des livraison](/orders_and_delivery/delivery.md) )
+Une fois que la commande est pres a etre livrer, une livraison est organiser en fonction de la commande et du client (voir [Gestion des livraison](/orders_and_delivery/delivery))
 
 ## Diagram - cycle de vie d'une commande
 
